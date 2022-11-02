@@ -1,0 +1,16 @@
+name: 定时抓取
+
+on:
+  schedule:
+    - cron: '0 * * * *'   #Runs every hour, on the hour
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: run start.sh
+        run: |
+          bash ./start.sh
