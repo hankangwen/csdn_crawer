@@ -28,7 +28,7 @@ def start():
 
 #     request_urls(result, 10, headers0)
 #     request_urls(result, 10, headers1)
-    request_urls(result, 20, headers2)
+    request_urls(result, 5, headers2)
 
 def request_urls(result, number, headers):
     for i in range(number):
