@@ -25,15 +25,16 @@ def start():
                 value1 = "{}".format(link1.get('href'))
                 if value1.find('qq_34035956/article') != -1 & value1.find("comments") == -1:
                     result.append(value1)
-
+    for link in result:
+            requests.get(link, headers=headers2)
 #     request_urls(result, 10, headers0)
 #     request_urls(result, 10, headers1)
-    request_urls(result, 5, headers2)
+#     request_urls(result, 5, headers2)
 
-def request_urls(result, number, headers):
-    for i in range(number):
-        for link in result:
-            requests.get(link, headers=headers)
+# def request_urls(result, number, headers):
+#     for i in range(number):
+#         for link in result:
+#             requests.get(link, headers=headers)
 
 if __name__ == '__main__':
     start()
