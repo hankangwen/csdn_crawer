@@ -5,9 +5,6 @@ def start():
     headers0 = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36(KHTHL, like Gecko) Chrome/45.0.2454.101 Safari/537.36',
     }
-#     headers1 = {
-#         "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36",
-#     }
     headers2 = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:34.0) Gecko/20100101 Firefox/34.0',
     }
@@ -26,15 +23,8 @@ def start():
                 if value1.find('qq_34035956/article') != -1 & value1.find("comments") == -1:
                     result.append(value1)
     for link in result:
-            requests.get(link, headers=headers2)
-#     request_urls(result, 10, headers0)
-#     request_urls(result, 10, headers1)
-#     request_urls(result, 5, headers2)
-
-# def request_urls(result, number, headers):
-#     for i in range(number):
-#         for link in result:
-#             requests.get(link, headers=headers)
+        print(link)
+        requests.get(link, headers=headers2)
 
 if __name__ == '__main__':
     start()
