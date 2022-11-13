@@ -1,8 +1,9 @@
 name: 定时抓取
 
 on:
-  schedule:
-    - cron: '0 * * * *'   #Runs every hour, on the hour
+  workflow_dispatch:
+#   schedule:
+#     - cron: '0 * * * *'   #Runs every hour, on the hour
 
 jobs:
   build:
