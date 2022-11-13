@@ -5,10 +5,15 @@ def start():
     headers0 = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36(KHTHL, like Gecko) Chrome/45.0.2454.101 Safari/537.36',
     }
-    headers2 = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:34.0) Gecko/20100101 Firefox/34.0',
-    }
+    # headers2 = {
+    #     'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:34.0) Gecko/20100101 Firefox/34.0',
+    # }
 
+    ignoreUrl = [
+        "127782969",
+    ]
+
+    prefix = "https://blog.csdn.net/qq_34035956/article/details/"
     result = []
     url0 = 'https://blog.csdn.net/qq_34035956?type=blog'
     html_file0 = requests.get(url0, headers=headers0)
@@ -21,10 +26,14 @@ def start():
             for link1 in obj_soup1.find_all('a'):
                 value1 = "{}".format(link1.get('href'))
                 if value1.find('qq_34035956/article') != -1 & value1.find("comments") == -1:
-                    result.append(value1)
+                    cur_url = value1.removeprefix(prefix)
+                    if not ignoreUrl.__contains__(cur_url):
+                        result.append(cur_url)
+
     for link in result:
-        print(link)
-        requests.get(link, headers=headers2)
+        cur_url = prefix + link
+        print(cur_url)
+        requests.get(link, headers=headers0)
 
 if __name__ == '__main__':
     start()
