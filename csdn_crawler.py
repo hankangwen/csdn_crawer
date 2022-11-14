@@ -22,9 +22,10 @@ def start():
                 value1 = "{}".format(link1.get('href'))
                 if value1.find('qq_34035956/article') != -1 & value1.find("comments") == -1:
                     result.append(value1)
-                    
+
     for link in result:
-        requests.get(value1, headers=headers2)
+        print(link)
+        requests.get(link, headers=headers2)
 
 if __name__ == '__main__':
     start()
