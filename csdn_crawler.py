@@ -251,7 +251,7 @@ def start():
 
     for link in links:
         print(link)
-        requests.get(link, headers=headers0)
+        requests.get(link, headers=headers2)
 
 if __name__ == '__main__':
     start()
