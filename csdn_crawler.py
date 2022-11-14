@@ -9,13 +9,7 @@ def start():
     #     'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:34.0) Gecko/20100101 Firefox/34.0',
     # }
 
-    ignoreUrl = [
-        "127782969",
-    ]
-
-    prefix = "https://blog.csdn.net/qq_34035956/article/details/"
-    result = []
-    url0 = 'https://blog.csdn.net/qq_34035956?type=blog'
+    url0 = 'https://blog.csdn.net/qq_34035956'
     html_file0 = requests.get(url0, headers=headers0)
     obj_soup0 = bs4.BeautifulSoup(html_file0.text, 'html.parser')
     for link in obj_soup0.find_all('a'):  # 遍历网页中所有的超链接（a标签）
@@ -26,14 +20,7 @@ def start():
             for link1 in obj_soup1.find_all('a'):
                 value1 = "{}".format(link1.get('href'))
                 if value1.find('qq_34035956/article') != -1 & value1.find("comments") == -1:
-                    cur_url = value1.removeprefix(prefix)
-                    if not ignoreUrl.__contains__(cur_url):
-                        result.append(cur_url)
-
-    for link in result:
-        cur_url = prefix + link
-        print(cur_url)
-        requests.get(link, headers=headers0)
+                    requests.get(value1, headers=headers0)
 
 if __name__ == '__main__':
     start()
