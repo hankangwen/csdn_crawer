@@ -12,4 +12,4 @@ jobs:
 
       - name: run start.sh
         run: |
-          bash ./start.sh
+          python ./csdn_crawler.py ${{ secrets.PUSH_TOKEN }}
